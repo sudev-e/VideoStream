@@ -1,0 +1,12 @@
+.carditems{
+    margin-top: 5%;
+    
+}
+@media screen and (min-width:300px){
+   .carditems{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+   }
+}
