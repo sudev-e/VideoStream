@@ -7,6 +7,16 @@ a{
     font-size: larger;
     padding-left: 30px;
   }
+  .search{
+    display: flex;
+    flex-direction: row;
+  }
+  .search input{
+    width: 120%;
+  }
+  .icons{
+    margin-top: 18px;
+  }
   nav {
       display: flex;
       align-items: center;

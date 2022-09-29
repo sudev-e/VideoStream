@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './components/Register';
+import Search from './pages/Search.jsx';
+ 
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <Route path='/'>
         <Route index element={<Home type="getall" />} />
         <Route path="trends" element={<Home type="trend" />} />
+        <Route path="search" element={<Search/>} />
         </Route>
         </Routes>
      </div>

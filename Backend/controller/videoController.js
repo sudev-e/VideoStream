@@ -98,5 +98,6 @@ module.exports = {
    getvideo,
    view,
    trending,
-   like
+   like,
+   search
   };

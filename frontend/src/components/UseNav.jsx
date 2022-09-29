@@ -3,11 +3,18 @@ import '../styles/UserNav.css'
 import {Link,useNavigate} from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux';
 import {logout,reset} from'../features/auth/authSlice'
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import styled from "styled-components";
 import { Component } from 'react'
 import Upload from './Upload';
+import axios from 'axios';
+ 
+ 
+
  function UserNav(){
     const navigate=useNavigate()
     const dispatch=useDispatch() 
+    const [q, setQ] = useState("");
     const [open,setOpen]=useState(false)
   const [clicked, setClicked] = useState(false)
    const handleClick =()=>{
@@ -19,7 +26,12 @@ import Upload from './Upload';
         navigate('/')
       }
     const {user}= useSelector((state)=>state.auth) 
-     
+     const trending=async()=>{
+      const video=await axios.get('/api/video/trend')
+      if(video){
+        navigate('/trends')
+      }
+     }
   return (
     <>
   <nav>
@@ -35,12 +47,22 @@ import Upload from './Upload';
                 <Link to='/'>Home</Link>
             </li>
             <li>
-                <Link to='/login'>trending</Link>
+               <a className='upload' onClick={()=>trending()}><Link to='/trends'>trending</Link></a> 
             </li>
             <li>
                 <Link to='/'>Contact Us</Link>
             </li>
-            <li>
+           <div className='search'>
+           <div><input
+              placeholder="Search"
+              onChange={(e) => setQ(e.target.value)}
+            /></div> 
+            <div className='icons'>
+            <SearchOutlinedIcon onClick={()=>navigate(`/search?q=${q}`)} />
+            </div>
+            </div>
+          
+            <li >
               {user?(<a className='upload' onClick={()=>setOpen(true)}>
                     Upload video
                     </a>):(<></>)}

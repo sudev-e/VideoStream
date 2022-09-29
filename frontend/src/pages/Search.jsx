@@ -1,20 +1,23 @@
 import React,{useEffect,useState} from 'react'
 import UserNav from '../components/UseNav'
-import styled from "styled-components";
 import axios from "axios";
 import VideoList from '../components/VideoList';
 import '../styles/VideoList.css'
+import { useLocation } from 'react-router-dom';
+ 
 
-function Home({type}) {
+function Home() {
   const [videos, setVideos] = useState([]);
+  const query = useLocation().search;
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`/api/video/${type}`);
+      const res = await axios.get(`/api/video/search${query}`);
       setVideos(res.data);
+      
     };
     fetchVideos();
-  },);
+  },[query]);
   return (
     <div><UserNav/>
     <div className='row   carditem'>

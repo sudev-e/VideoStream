@@ -57,7 +57,7 @@ const {user,isLoading,isError,isSuccess,message}= useSelector(
 				<span>or use your account</span>
 				<input type="email" placeholder="Email" name='email'value={email} onChange={onchanging}/>
 				<input type="password" placeholder="Password" name='password' value={password} onChange={onchanging} />
-                <a><Link to='/login'>Forgot your password?</Link></a> 
+                <Link to='/signup'>Don't have an account?</Link>
 				<button>Log In</button>
 			</form></div>
       </div>
